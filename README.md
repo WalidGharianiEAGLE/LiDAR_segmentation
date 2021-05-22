@@ -21,7 +21,7 @@ Sets of python scripts for lidar data processing with batsh processing
 3. `buildings_extraction.py`
    * Extract point clouds classified as Buildings (laz/las)
    * `python buildings_extraction.py <infile> <filtertype> <extract_Buildings>` 
-   * Example `buildings_extraction.py merged_lidar_10percent.laz csf extract_Buildings.laz` 
+   * Example `python buildings_extraction.py merged_lidar_10percent.laz csf extract_Buildings.laz` 
 
 
 #### Extra processing 
