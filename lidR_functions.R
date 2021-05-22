@@ -61,14 +61,15 @@ automated_Seg <- function (input, dtm, ndsm){
   lidR_wurz <- classify_ground(lidR_wurz, mycsf)
   DTM = grid_terrain(lidR_wurz,  res = .1,algorithm = knnidw(k = 6L, p=2))
   dtm_output <- paste("./output_lidar/",dtm, sep ="")
-  writeRaster(DTM , dtm_output)
+  writeRaster(DTM , dtm_output,overwrite = TRUE)
   lidar_aoi <- lidR_wurz
   lidar_aoi <- normalize_height(lidar_aoi, DTM)
   lidar_aoi = lasfilter(lidar_aoi, Classification != 2L & ReturnNumber == 1L)
   lidar_aoi <- filter_poi(lidar_aoi, Z >= 0)
+  writeLAS(lidar_aoi , "./Output_lidar/lidar_filtered.las")
   nDSM <- grid_canopy(lidar_aoi, res = .1, p2r())
   ndsm_output <- paste("./output_lidar/",ndsm, sep ="")
-  writeRaster(nDSM , ndsm_output)
+  writeRaster(nDSM , ndsm_output,overwrite = TRUE)
   lidar_seg <- lidar_aoi 
   lidar_seg <- segment_shapes(lidar_seg, shp_plane(th1 = 25, th2 = 6, k = 64), "Coplanar")
   plot(lidar_seg,bg = "white", axis=TRUE, color = "Coplanar",colorPalette = c("darkgreen", "red"))
