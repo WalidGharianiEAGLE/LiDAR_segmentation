@@ -141,7 +141,7 @@ def main() :
     Gr_NGr_pts = sys.argv[3]
     dtm = sys.argv[4]
     dsm = sys.argv[5]
-    pdal_processing(infile, Gr_NGr_pts, dtm, dsm)
+    pdal_processing(infile, filtertype, Gr_NGr_pts, dtm, dsm)
     
 if __name__ == "__main__":
     main()
